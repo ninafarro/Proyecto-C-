@@ -41,10 +41,15 @@ void Imprimir_tablero(){
 }
 
 void Solicitar_coordenadas(){
-    cout << "\n\nIngrese las coordenadas en las que desea ingresar la letra seleccionada.\n\nColumna (Letra mayúscula):";
+    cout << "\n\nIngrese las coordenadas en las que desea ingresar la letra seleccionada.\n\nColumna: ";
     cin >> coordenada_column;
     while ((coordenada_column!=0)&&(coordenada_column!=1)&&(coordenada_column!=2)&&(coordenada_column!=3)&&(coordenada_column!=4)&&(coordenada_column!=5)&&(coordenada_column!=6)&&(coordenada_column!=7)&&(coordenada_column!=8)&&(coordenada_column!=9)){
-        cout << "\n\nIngrese un número válido (0-9):\n\n";
+        cout << "\nIngrese un número válido (0-9): ";
+        cin >> coordenada_column;}
+    cout << "\nFila: ";
+    cin >> coordenada_fila;
+    while ((coordenada_fila!=0)&&(coordenada_fila!=1)&&(coordenada_fila!=2)&&(coordenada_fila!=3)&&(coordenada_fila!=4)&&(coordenada_fila!=5)&&(coordenada_fila!=6)&&(coordenada_fila!=7)&&(coordenada_fila!=8)&&(coordenada_fila!=9)){
+        cout << "\nIngrese un número válido (0-9): ";
         cin >> coordenada_column;}
 }
 
@@ -53,5 +58,6 @@ int main() {
     Solicitar_letra();
     Nuevo_tablero();
     Imprimir_tablero();
+    Solicitar_coordenadas();
     return 0;
 }
