@@ -60,13 +60,22 @@ void Solicitar_coordenadas(){
     while ((coordenada_fila!=0)&&(coordenada_fila!=1)&&(coordenada_fila!=2)&&(coordenada_fila!=3)&&(coordenada_fila!=4)&&(coordenada_fila!=5)&&(coordenada_fila!=6)&&(coordenada_fila!=7)&&(coordenada_fila!=8)&&(coordenada_fila!=9)){
         cout << "\nIngrese un número válido (0-9): ";
         cin >> coordenada_column;}
+        while (tablero[coordenada_fila][coordenada_column]!='-'){
+        cout << "\n\nIngrese una ubicación libre.\n";
+        while ((coordenada_column!=0)&&(coordenada_column!=1)&&(coordenada_column!=2)&&(coordenada_column!=3)&&(coordenada_column!=4)&&(coordenada_column!=5)&&(coordenada_column!=6)&&(coordenada_column!=7)&&(coordenada_column!=8)&&(coordenada_column!=9)){
+        cout << "\nIngrese un número válido (0-9): ";
+        cin >> coordenada_column;}
+        cout << "\nFila: ";
+        cin >> coordenada_fila;
+        while ((coordenada_fila!=0)&&(coordenada_fila!=1)&&(coordenada_fila!=2)&&(coordenada_fila!=3)&&(coordenada_fila!=4)&&(coordenada_fila!=5)&&(coordenada_fila!=6)&&(coordenada_fila!=7)&&(coordenada_fila!=8)&&(coordenada_fila!=9)){
+        cout << "\nIngrese un número válido (0-9): ";
+        cin >> coordenada_column;}
+    }
 }
 
 void Colocar_letra(){
-    if (tablero[coordenada_fila][coordenada_column]='-'){
-    if (input==0) tablero[coordenada_fila][coordenada_column]='O';
-    if (input==1) tablero[coordenada_fila][coordenada_column]='S';
-    }
+        if (input==0) tablero[coordenada_fila][coordenada_column]='O';
+        if (input==1) tablero[coordenada_fila][coordenada_column]='S';
 }
 
 void Turno(){
