@@ -164,7 +164,7 @@ int main() {
     Nuevo_tablero();
     Instrucciones();
     Solicitar_nombres();
-    while (contador<=30){
+    while (contador<=20){
     cout << "\n\nTurno de " << Jugador1;
         Turno();
         Puntaje_J1=Puntos();
@@ -184,7 +184,7 @@ int main() {
             Puntaje_J2=Puntos();
             PuntajeTotal_J2=PuntajeTotal_J2+PuntajeTotal_J2;
         }
-    contador++;
+    ++contador;
     }
     Determinar_ganador();
     return 0;
