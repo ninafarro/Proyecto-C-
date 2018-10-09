@@ -86,6 +86,7 @@ int main() {
         Turno();
     cout << "\n\nTurno de " << Jugador2;
         Turno();
+    contador++;
     }
     return 0;
 }
