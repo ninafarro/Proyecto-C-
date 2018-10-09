@@ -4,7 +4,7 @@
 using namespace std;
 
 char tablero[10][10], columna[11]={' ','0','1','2','3','4','5','6','7','8','9'};
-int input, coordenada_column, coordenada_fila, contador=0, Puntaje_J1=0, Puntaje_J2=0;
+int input, coordenada_column, coordenada_fila, contador=0, Puntaje_J1=0, Puntaje_J2=0, PuntajeTotal_J1, PuntajeTotal_J2;
 string Jugador1, Jugador2;
 
 void Instrucciones(){
@@ -79,40 +79,63 @@ void Colocar_letra(){
         if (input==1) tablero[coordenada_fila][coordenada_column]='S';
 }
 
-int Punto(){
+int Puntos(){
     int puntaje;
-    if (tablero[coordenada_fila][coordenada_column]='O'){
-        if (tablero[coordenada_fila-1][coordenada_column]='S'){
-            if (tablero[coordenada_fila-2][coordenada_column]='O'){
+    if (tablero[coordenada_fila][coordenada_column]=='O'){
+        if (tablero[coordenada_fila-1][coordenada_column]=='S'){
+            if (tablero[coordenada_fila-2][coordenada_column]=='O'){
                 ++puntaje;
             }
         }
-        if (tablero[coordenada_fila+1][coordenada_column]='S'){
-            if (tablero[coordenada_fila+2][coordenada_column]='O'){
+        if (tablero[coordenada_fila+1][coordenada_column]=='S'){
+            if (tablero[coordenada_fila+2][coordenada_column]=='O'){
                 ++puntaje;
             }
         }
-        if (tablero[coordenada_fila][coordenada_column-1]='S'){
-            if (tablero[coordenada_fila][coordenada_column-2]='O'){
+        if (tablero[coordenada_fila][coordenada_column-1]=='S'){
+            if (tablero[coordenada_fila][coordenada_column-2]=='O'){
                 ++puntaje;
             }
         }
-        if (tablero[coordenada_fila][coordenada_column+1]='S'){
-            if (tablero[coordenada_fila][coordenada_column+2]='O'){
+        if (tablero[coordenada_fila][coordenada_column+1]=='S'){
+            if (tablero[coordenada_fila][coordenada_column+2]=='O'){
                 ++puntaje;
             }
         }
-        if (tablero[coordenada_fila-1][coordenada_column-1]='S'){
-            if (tablero[coordenada_fila+1][coordenada_column+1]='O'){
+        if (tablero[coordenada_fila-1][coordenada_column-1]=='S'){
+            if (tablero[coordenada_fila+1][coordenada_column+1]=='O'){
                 ++puntaje;
             }
         }
-        if (tablero[coordenada_fila-1][coordenada_column-+1]='S'){
-            if (tablero[coordenada_fila+1][coordenada_column-1]='O'){
+        if (tablero[coordenada_fila-1][coordenada_column-+1]=='S'){
+            if (tablero[coordenada_fila+1][coordenada_column-1]=='O'){
                 ++puntaje;
             }
         }
     }
+    if (tablero[coordenada_fila][coordenada_column]=='S'){
+        if (tablero[coordenada_fila][coordenada_column-1]=='O'){
+            if (tablero[coordenada_fila][coordenada_column+1]=='O'){
+                ++puntaje;
+            }
+        }
+        if (tablero[coordenada_fila-1][coordenada_column]=='O'){
+            if (tablero[coordenada_fila+1][coordenada_column]=='O'){
+                ++puntaje;
+            }
+        }
+        if (tablero[coordenada_fila-1][coordenada_column-1]=='O'){
+            if (tablero[coordenada_fila+1][coordenada_column+1]=='O'){
+                ++puntaje;
+            }
+        }
+        if (tablero[coordenada_fila-1][coordenada_column+1]=='O'){
+            if (tablero[coordenada_fila+1][coordenada_column-1]=='O'){
+                ++puntaje;
+            }
+        }
+    }
+    cout << "\n\n+" << puntaje << " pts.\n\n";
     return puntaje;
 }
 
@@ -131,8 +154,24 @@ int main() {
     while (contador<=30){
     cout << "\n\nTurno de " << Jugador1;
         Turno();
+        Puntaje_J1=Puntos();
+        PuntajeTotal_J1=PuntajeTotal_J1+PuntajeTotal_J1;
+        while (Puntaje_J1!=0){
+            Turno();
+            Puntaje_J1=Puntos();
+            PuntajeTotal_J1=PuntajeTotal_J1+PuntajeTotal_J1;
+        }
+        
     cout << "\n\nTurno de " << Jugador2;
         Turno();
+        Puntaje_J2=Puntos();
+        PuntajeTotal_J2=PuntajeTotal_J2+PuntajeTotal_J2;
+        while (Puntaje_J2!=0){
+            Turno();
+            Puntaje_J2=Puntos();
+            PuntajeTotal_J2=PuntajeTotal_J2+PuntajeTotal_J2;
+        }
+
     contador++;
     }
     return 0;
