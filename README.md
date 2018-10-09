@@ -4,12 +4,20 @@
 using namespace std;
 
 char tablero[10][10], columna[11]={' ','0','1','2','3','4','5','6','7','8','9'};
-int input, coordenada_column, coordenada_fila;
+int input, coordenada_column, coordenada_fila, contador=0;
+string Jugador1, Jugador2;
 
 void Instrucciones(){
     cout << "INSTRUCCIONES:";
     cout << "\n\nElija 'S' u 'O' como indica a continuación para formar la palabra 'OSO'. Por cada 'OSO' que forme en su turno, ganará 1 punto.";
     }
+    
+void Solicitar_nombres(){
+    cout << "\n\nNombres de los jugadores.\n\nJugador 1: ";
+    cin >> Jugador1;
+    cout << "\nJugador 2: ";
+    cin >> Jugador2;
+}
 
 void Solicitar_letra(){
     cout << "\n\nInserte 0 o 1.\n0: O\n1: S\n\n";
@@ -27,6 +35,7 @@ void Nuevo_tablero(){
 
 void Imprimir_tablero(){
     int num=0;
+    cout << "\n\n";
     for (int letra=0; letra<11; letra++){
             cout << setw(3) << columna[letra];
     }
@@ -53,11 +62,30 @@ void Solicitar_coordenadas(){
         cin >> coordenada_column;}
 }
 
-int main() {
-    Instrucciones();
+void Colocar_letra(){
+    if (tablero[coordenada_fila][coordenada_column]='-'){
+    if (input==0) tablero[coordenada_fila][coordenada_column]='O';
+    if (input==1) tablero[coordenada_fila][coordenada_column]='S';
+    }
+}
+
+void Turno(){
     Solicitar_letra();
-    Nuevo_tablero();
     Imprimir_tablero();
     Solicitar_coordenadas();
+    Colocar_letra();
+    Imprimir_tablero();
+}
+
+int main() {
+    Nuevo_tablero();
+    Instrucciones();
+    Solicitar_nombres();
+    while (contador!=30){
+    cout << "\n\nTurno de " << Jugador1;
+        Turno();
+    cout << "\n\nTurno de " << Jugador2;
+        Turno();
+    }
     return 0;
 }
