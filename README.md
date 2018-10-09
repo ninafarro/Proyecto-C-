@@ -81,7 +81,7 @@ int main() {
     Nuevo_tablero();
     Instrucciones();
     Solicitar_nombres();
-    while (contador!=30){
+    while (contador<=30){
     cout << "\n\nTurno de " << Jugador1;
         Turno();
     cout << "\n\nTurno de " << Jugador2;
