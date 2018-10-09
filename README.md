@@ -4,13 +4,13 @@
 using namespace std;
 
 char tablero[10][10], columna[11]={' ','0','1','2','3','4','5','6','7','8','9'};
-int input, coordenada_column, coordenada_fila, contador=0;
+int input, coordenada_column, coordenada_fila, contador=0, Puntaje_J1=0, Puntaje_J2=0;
 string Jugador1, Jugador2;
 
 void Instrucciones(){
     cout << "INSTRUCCIONES:";
     cout << "\n\nElija 'S' u 'O' como indica a continuación para formar la palabra 'OSO'. Por cada 'OSO' que forme en su turno, ganará 1 punto.";
-    }
+}
     
 void Solicitar_nombres(){
     cout << "\n\nNombres de los jugadores.\n\nJugador 1: ";
@@ -24,14 +24,15 @@ void Solicitar_letra(){
     cin >> input;
     while ((input!=1)&&(input!=0)){
         cout << "\nIngrese un número válido (0 o 1):\n\n";
-        cin >> input;}
+        cin >> input;
     }
+}
 
 void Nuevo_tablero(){
     for (int espacio=0; espacio<100; espacio++){
             tablero[0][espacio]='-';
     }
-    }
+}
 
 void Imprimir_tablero(){
     int num=0;
@@ -76,6 +77,43 @@ void Solicitar_coordenadas(){
 void Colocar_letra(){
         if (input==0) tablero[coordenada_fila][coordenada_column]='O';
         if (input==1) tablero[coordenada_fila][coordenada_column]='S';
+}
+
+int Punto(){
+    int puntaje;
+    if (tablero[coordenada_fila][coordenada_column]='O'){
+        if (tablero[coordenada_fila-1][coordenada_column]='S'){
+            if (tablero[coordenada_fila-2][coordenada_column]='O'){
+                ++puntaje;
+            }
+        }
+        if (tablero[coordenada_fila+1][coordenada_column]='S'){
+            if (tablero[coordenada_fila+2][coordenada_column]='O'){
+                ++puntaje;
+            }
+        }
+        if (tablero[coordenada_fila][coordenada_column-1]='S'){
+            if (tablero[coordenada_fila][coordenada_column-2]='O'){
+                ++puntaje;
+            }
+        }
+        if (tablero[coordenada_fila][coordenada_column+1]='S'){
+            if (tablero[coordenada_fila][coordenada_column+2]='O'){
+                ++puntaje;
+            }
+        }
+        if (tablero[coordenada_fila-1][coordenada_column-1]='S'){
+            if (tablero[coordenada_fila+1][coordenada_column+1]='O'){
+                ++puntaje;
+            }
+        }
+        if (tablero[coordenada_fila-1][coordenada_column-+1]='S'){
+            if (tablero[coordenada_fila+1][coordenada_column-1]='O'){
+                ++puntaje;
+            }
+        }
+    }
+    return puntaje;
 }
 
 void Turno(){
