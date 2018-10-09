@@ -139,6 +139,19 @@ int Puntos(){
     return puntaje;
 }
 
+void Determinar_ganador(){
+    cout << "\n\nFIN DE LA PARTIDA\n\nPuntaje total de " << Jugador1 << ": " << PuntajeTotal_J1 << "\nPuntaje total de " << Jugador2 << ": " << PuntajeTotal_J2;
+    if (PuntajeTotal_J1>PuntajeTotal_J2){
+        cout << "\n\n¡" << Jugador1 << " HA GANADO! :D";
+    }
+    else{
+        if (PuntajeTotal_J2>PuntajeTotal_J1){
+            cout << "\n\n¡" << Jugador2 << " HA GANADO! :D";
+        }
+        else cout << "\n\nEMPATE.";
+    }
+}
+
 void Turno(){
     Solicitar_letra();
     Imprimir_tablero();
@@ -171,8 +184,8 @@ int main() {
             Puntaje_J2=Puntos();
             PuntajeTotal_J2=PuntajeTotal_J2+PuntajeTotal_J2;
         }
-
     contador++;
     }
+    Determinar_ganador();
     return 0;
 }
